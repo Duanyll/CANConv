@@ -1,8 +1,8 @@
 # Content-Adaptive Non-Local Convolution for Remote Sensing Pansharpening
 
-![The overall workflow of CANConv.](https://cdn.duanyll.com/img/20240308152348.png)
+*Yule Duan, Xiao Wu, Haoyu Deng, Liang-Jian Deng*
 
-Here we provide the source code for the CVPR 2024 paper **Content-Adaptive Non-Local Convolution for Remote Sensing Pansharpening**. 
+![The overall workflow of CANConv.](https://cdn.duanyll.com/img/20240308152348.png)
 
 Abstract: Currently, machine learning-based methods for remote sensing pansharpening have progressed rapidly. However, existing pansharpening methods often do not fully exploit differentiating regional information in non-local spaces, thereby limiting the effectiveness of the methods and resulting in redundant learning parameters. In this paper, we introduce a so-called content-adaptive non-local convolution (CANConv), a novel method tailored for remote sensing image pansharpening. Specifically, CANConv employs adaptive convolution, ensuring spatial adaptability, and incorporates non-local self-similarity through the similarity relationship partition (SRP) and the partition-wise adaptive convolution (PWAC) sub-modules. Furthermore, we also propose a corresponding network architecture, called CANNet, which mainly utilizes the multi-scale self-similarity. Extensive experiments demonstrate the superior performance of CANConv, compared with recent promising fusion methods. Besides, we substantiate the method's effectiveness through visualization, ablation experiments, and comparison with existing methods on multiple test sets. The source code is publicly available.
 
