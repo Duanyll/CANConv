@@ -9,7 +9,7 @@ from canconv.util.log import save_mat_data
 
 
 def main(model_name, cfg=None, save_mat=True, preset=None, override=None):
-    module = importlib.import_module(f"canconv.model.{model_name}")
+    module = importlib.import_module(f"canconv.models.{model_name}")
 
     if cfg is None:
         cfg = module.cfg

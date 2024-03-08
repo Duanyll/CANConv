@@ -9,7 +9,7 @@ class CANResBlock(nn.Module):
         super().__init__(*args, **kwargs)
         self.conv1 = CANConv(channels, channels, cluster_num=cluster_num,
                             cluster_source=cluster_source, filter_threshold=filter_threshold)
-        self.conv2 = CANConv(channels, channels, cluster_num=cluster_num)
+        self.conv2 = CANConv(channels, channels, cluster_num=cluster_num, filter_threshold=filter_threshold)
         self.act = nn.LeakyReLU(inplace=True)
 
     def forward(self, x, cache_indice=None, cluster_override=None):

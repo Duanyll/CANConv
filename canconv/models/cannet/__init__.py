@@ -1,5 +1,5 @@
 from .model import CANNet
-from .config import CANUNetTrainer as Trainer
+from .config import CANNetTrainer as Trainer
 
 import os.path
 import json

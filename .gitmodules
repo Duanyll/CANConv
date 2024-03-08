@@ -1,0 +1,3 @@
+[submodule "kmcuda"]
+	path = kmcuda
+	url = https://github.com/Duanyll/kmcuda

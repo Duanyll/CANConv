@@ -7,7 +7,7 @@ from canconv.util.trainer import SimplePanTrainer
 from canconv.layers.kmeans import reset_cache, KMeansCacheScheduler
 
 
-class CANUNetTrainer(SimplePanTrainer):
+class CANNetTrainer(SimplePanTrainer):
     def __init__(self, cfg) -> None:
         super().__init__(cfg)
 
