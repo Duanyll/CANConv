@@ -25,8 +25,8 @@
         "all"
     ],
     "mounts": [
-        // TYPE YOUR ABSOLUTE PATH TO THE DATASETS FOLDER
-        "type=bind,source=/absolute/path/to/datasets,target=/datasets"
+        // UNCOMMENT AND TYPE YOUR ABSOLUTE PATH TO THE DATASETS FOLDER
+        // "type=bind,source=/absolute/path/to/datasets,target=/datasets"
     ],
     "shutdownAction": "none",
     "hostRequirements": {
