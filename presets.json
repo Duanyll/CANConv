@@ -1,0 +1,30 @@
+{
+    "wv3": {
+        "train_data": "/datasets/wv3/train_wv3.h5",
+        "val_data": "/datasets/wv3/valid_wv3.h5",
+        "test_reduced_data": "/datasets/wv3/test_wv3_multiExm1.h5",
+        "test_origscale_data": "/datasets/wv3/test_wv3_OrigScale_multiExm2.h5",
+        "spectral_num": 8,
+        "dataset_scale": 2047
+    },
+    "gf2": {
+        "train_data": "/datasets/gf2/train_gf2.h5",
+        "val_data": "/datasets/gf2/valid_gf2.h5",
+        "test_reduced_data": "/datasets/gf2/test_gf2_multiExm1.h5",
+        "test_origscale_data": "/datasets/gf2/test_gf2_OrigScale_multiExm2.h5",
+        "spectral_num": 4,
+        "learning_rate": 0.0005,
+        "lr_step_size": 500,
+        "dataset_scale": 1023
+    },
+    "qb": {
+        "train_data": "/datasets/qb/train_qb.h5",
+        "val_data": "/datasets/qb/valid_qb.h5",
+        "test_reduced_data": "/datasets/qb/test_qb_multiExm1.h5",
+        "test_origscale_data": "/datasets/qb/test_qb_OrigScale_multiExm2.h5",
+        "spectral_num": 4,
+        "learning_rate": 0.0005,
+        "lr_step_size": 500,
+        "dataset_scale": 2047
+    }
+}

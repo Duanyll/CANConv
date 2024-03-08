@@ -1,0 +1,22 @@
+{
+    "seed": 10,
+    "train_data": "/datasets/wv3/train_wv3.h5",
+    "val_data": "/datasets/wv3/valid_wv3.h5",
+    "test_reduced_data": "/datasets/wv3/test_wv3_multiExm1.h5",
+    "test_origscale_data": "/datasets/wv3/test_wv3_OrigScale_multiExm2.h5",
+    "spectral_num": 8,
+    "channels": 64,
+    "batch_size": 32,
+    "device": "cuda:0",
+    "learning_rate": 0.001,
+    "lr_step_size": 500,
+    "lr_gamma": 0.5,
+    "epochs": 1000,
+    "checkpoint": 25,
+    "loss": "l2",
+    "exp_name": "candicnn",
+    "cluster_num": 32,
+    "kmeans_cache_update": [[100, 10], [300, 20], 50],
+    "val_interval": 20,
+    "disable_alloc_cache": false
+}
