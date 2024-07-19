@@ -3,7 +3,7 @@
     "train_data": "/datasets/wv3/train_wv3.h5",
     "val_data": "/datasets/wv3/valid_wv3.h5",
     "test_reduced_data": "/datasets/wv3/test_wv3_multiExm1.h5",
-    "test_origscale_data": "/datasets/wv3/test_wv3_OrigScale_multiExm2.h5",
+    "test_origscale_data": "/datasets/wv3/test_wv3_OrigScale_multiExm1.h5",
     "spectral_num": 8,
     "batch_size": 32,
     "device": "cuda:0",

@@ -20,7 +20,7 @@ class H5PanDataset(Dataset):
         super().__init__()
         self.file_path = file_path
         if scale == 0.:
-            if "wv3" in file_path or "qb" in file_path:
+            if "wv3" in file_path or "qb" in file_path or "wv2" in file_path:
                 scale = 2047.
             elif "gf2" in file_path:
                 scale = 1023.

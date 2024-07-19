@@ -1,7 +1,8 @@
 {
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    // "build": {
+    //     "dockerfile": "Dockerfile"
+    // },
+    "image": "pansharpening:v2",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -26,7 +27,7 @@
     ],
     "mounts": [
         // UNCOMMENT AND TYPE YOUR ABSOLUTE PATH TO THE DATASETS FOLDER
-        // "type=bind,source=/absolute/path/to/datasets,target=/datasets"
+        "type=bind,source=/mnt/d/datasets/Pansharpening,target=/datasets"
     ],
     "shutdownAction": "none",
     "hostRequirements": {
