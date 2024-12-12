@@ -1,4 +1,3 @@
 {
     "python.analysis.typeCheckingMode": "basic",
-    "cmake.sourceDirectory": "/workspaces/CANConv/canconv/layers/pwac"
 }

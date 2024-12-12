@@ -12,10 +12,9 @@ if (MSVC)
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4624")
 endif()
 
-find_package(PythonInterp 3 REQUIRED)
-find_package(PythonLibs 3 REQUIRED)
+find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
 
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import torch; print(torch.utils.cmake_prefix_path)" OUTPUT_VARIABLE PYTORCH_CMAKE_PREFIX_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
+execute_process(COMMAND ${Python3_EXECUTABLE} -c "import torch; print(torch.utils.cmake_prefix_path)" OUTPUT_VARIABLE PYTORCH_CMAKE_PREFIX_PATH OUTPUT_STRIP_TRAILING_WHITESPACE)
 list(APPEND CMAKE_PREFIX_PATH "${PYTORCH_CMAKE_PREFIX_PATH}/Torch")
 message("PYTORCH_CMAKE_PREFIX_PATH ${PYTORCH_CMAKE_PREFIX_PATH}")
 message("CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}")
@@ -26,8 +25,9 @@ message("TORCH_LIBRARIES: ${TORCH_LIBRARIES}")
 message("TORCH_PYTHON_LIBRARY: ${TORCH_PYTHON_LIBRARY}")
 message("CMAKE_CUDA_FLAGS: ${CMAKE_CUDA_FLAGS}")
 message("CUDA_NVCC_FLAGS: ${CUDA_NVCC_FLAGS}")
+message("Python3_INCLUDE_DIRS: ${Python3_INCLUDE_DIRS}")
 
-include_directories(${PYTHON_INCLUDE_DIRS})
+include_directories(${Python3_INCLUDE_DIRS})
 
 add_library(pwacnative SHARED 
   "main.cc" 
@@ -41,7 +41,7 @@ add_library(pwacnative SHARED
   "permute.cc"
 )
 target_link_libraries(pwacnative 
-  ${PYTHON_LIBRARIES}
+  ${Python3_LIBRARIES}
   ${TORCH_LIBRARIES}
   ${TORCH_PYTHON_LIBRARY}
 )
@@ -50,10 +50,10 @@ target_compile_definitions(pwacnative PRIVATE TORCH_EXTENSION_NAME=pwacnative)
 # Copy output binary to source directory
 if (WIN32)
   add_custom_command(TARGET pwacnative POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:pwacnative> ${CMAKE_SOURCE_DIR}/pwacnative.pyd
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:pwacnative> ${CMAKE_CURRENT_LIST_DIR}/pwacnative.pyd
   )
 else()
   add_custom_command(TARGET pwacnative POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:pwacnative> ${CMAKE_SOURCE_DIR}/pwacnative.so
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:pwacnative> ${CMAKE_CURRENT_LIST_DIR}/pwacnative.so
   )
 endif()

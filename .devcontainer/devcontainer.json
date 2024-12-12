@@ -1,36 +1,57 @@
 {
-    // "build": {
-    //     "dockerfile": "Dockerfile"
-    // },
-    "image": "pansharpening:v2",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-python.python",
-                "ms-python.autopep8",
-                "ms-vscode.cmake-tools",
-                "ms-vscode.cpptools",
-                "GitHub.copilot",
-                "ms-vscode.hexeditor"
-            ]
-        }
-    },
-    "capAdd": [
-        "SYS_PTRACE"
-    ],
+    // For quick reference: https://containers.dev/implementors/json_reference/
+    "name": "Pytorch GPU",
+    "image": "pytorch/pytorch:2.5.0-cuda12.4-cudnn9-devel",
     "runArgs": [
-        // Enable host.docker.internal DNS name
-        "--add-host=host.docker.internal:host-gateway",
-        // Enable CUDA support
         "--gpus",
         "all"
     ],
+    "features": {
+        // Uncomment the following to use a custom mirror for Ubuntu and pip
+        // "ghcr.io/duanyll/devcontainer-features/mirrors:latest": {
+        //     "ubuntu": "https://mirrors.uestc.cn/ubuntu",
+        //     "pip": "https://mirrors.uestc.cn/pypi/web/simple"
+        // },
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "false",
+            "configureZshAsDefaultShell": "false",
+            "installOhMyZsh": "false",
+            "installOhMyZshConfig": "false",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "false"
+        }
+    },
+    "overrideFeatureInstallOrder": [
+        // Uncomment the following to use a custom mirror for Ubuntu and pip
+        // "ghcr.io/duanyll/devcontainer-features/mirrors:latest",
+        "ghcr.io/devcontainers/features/common-utils:2"
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/opt/conda/bin/python"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.autopep8",
+                "KevinRose.vsc-python-indent",
+                "Rubymaniac.vscode-paste-and-indent",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools",
+                "GitHub.copilot",
+                "ms-vscode.hexeditor",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.tensorboard"
+            ]
+        }
+    },
     "mounts": [
         // UNCOMMENT AND TYPE YOUR ABSOLUTE PATH TO THE DATASETS FOLDER
         "type=bind,source=/mnt/d/datasets/Pansharpening,target=/datasets"
     ],
-    "shutdownAction": "none",
-    "hostRequirements": {
-        "gpu": true
-    }
+    "remoteUser": "vscode",
+    "onCreateCommand": "sudo ln -sf /usr/bin/dash /usr/bin/sh",
+    "updateContentCommand": "bash ./build.sh"
 }

@@ -11,14 +11,14 @@ Abstract: Currently, machine learning-based methods for remote sensing pansharpe
 
 ## Getting Started
 
-### Environment Setup
+### Environment Setup with Docker
 
 **Please prepare a Docker environment with CUDA support:**
 
 - Ensure you have Docker installed on your system.
 - To enable CUDA support within the Docker environment, refer to the official Docker documentation for setting up GPU acceleration: Docker GPU setup: [https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 
-### Using the Repo
+If you cannot use Docker, you can also set up the environment manually. However, you may run into issues with the dependencies.
 
 1. **Clone the repo and its submodules:**
     
@@ -35,8 +35,9 @@ Abstract: Currently, machine learning-based methods for remote sensing pansharpe
     - When prompted, select "Reopen in Container" to activate the devcontainer environment.
     - It may take serval minutes when pulling the base PyTorch image and install requirements for the first time.
 
-4. **Build native libraries:**
-    
+4. **Install pacakges and build native libraries**
+   - If you are using the devcontainer, you can skip this step, vscode will automatically run the script.
+   
    ```bash
    bash ./build.sh
    ```
