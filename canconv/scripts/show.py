@@ -11,7 +11,7 @@ import numpy as np
 
 from canconv.util.log import to_rgb
 
-def show(result_dir):
+def show(result_dir, save_file=None):
     if os.path.basename(result_dir) != "results":
         result_dir = os.path.join(result_dir, "results")
     filenames = [f"output_mulExm_{i}.mat" for i in range(20)]
@@ -22,10 +22,14 @@ def show(result_dir):
     for i, ax in enumerate(axes.flat):
         ax.imshow(sr[i])
         ax.axis("off")
-    plt.show()
+    if save_file is not None:
+        plt.savefig(save_file)
+    else:
+        plt.show()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("result_dir", type=str)
+    parser.add_argument("save_file", type=str, default=None)
     args = parser.parse_args()
-    show(args.result_dir)
+    show(args.result_dir, args.save_file)
