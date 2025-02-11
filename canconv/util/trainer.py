@@ -53,6 +53,12 @@ class SimplePanTrainer(metaclass=ABCMeta):
         self.logger.info(f"Seed set to {cfg['seed']}")
         
         self.dev = torch.device(cfg['device'])
+        if self.dev.type != "cuda":
+            raise ValueError(f"Only cuda device is supported, got {self.dev.type}")
+        if self.dev.index != 0:
+            self.logger.warning("Warning: Multi-GPU is not supported, the code may not work properly with GPU other than cuda:0. Please use CUDA_VISIBLE_DEVICES to select the device.")
+            torch.cuda.set_device(self.dev)
+            
         self.logger.info(f"Using device: {self.dev}")
         self._create_model(cfg)
         self.forward({

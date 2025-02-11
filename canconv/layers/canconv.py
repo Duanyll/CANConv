@@ -263,7 +263,7 @@ class CANConv(nn.Module):
                 x, patches), cache_indice=cache_indice)
             if self.filter_threshold > 0:
                 cluster_indice = filter_indice(
-                    cluster_indice, self.cluster_num, self.filter_threshold).cuda()
+                    cluster_indice, self.cluster_num, self.filter_threshold).to(x.device)
 
         # Step 2: Calculate centroids for each cluster
         centroids = get_cluster_centers(

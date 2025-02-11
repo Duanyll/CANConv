@@ -62,3 +62,10 @@ If you cannot use Docker, you can also set up the environment manually. However,
 
 **Metrics:**
 - Metrics are obtained using tools from [liangjiandeng/DLPan-Toolbox](https://github.com/liangjiandeng/DLPan-Toolbox) (specifically, the `02-Test-toolbox-for-traditional-and-DL(Matlab)` directory).
+
+## Known Issues
+
+- The code is not adapted for using multiple GPUs. If you have multiple GPUs, you can only utilize one GPU for training.
+   - If you have to use a device other than `cuda:0`, you have to use `CUDA_VISIBLE_DEVICES` to specify the GPU device.
+   - For example, to use the second GPU, you can run `CUDA_VISIBLE_DEVICES=1 python -m canconv.scripts.train cannet wv3`.
+   - Notes: Though the Python code respects the `device` option in the configuration file, the C++ code contains direct calls to cuBLAS functions, which may not respect the device option. The `CUDA_VISIBLE_DEVICES` environment variable is the most reliable way to specify the GPU device.
